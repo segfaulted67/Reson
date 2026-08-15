@@ -1,0 +1,44 @@
+#+TITLE: README FOR RESON
+#+AUTHOR: segfaulted67
+
+* Reson
+Reson is a lightweight C++ audio wrapper built on top of miniaudio.
+* Requirements
+- C++20 or later
+- miniaudio
+* Installation
+** Linux
+#+begin_src bash
+git clone --recursive https://github.com/segfaulted67/Reson.git
+#+end_src
+
+* Usage
+Include Reson.h to your project
+#+begin_src C
+  #include "Reson/Reson.h"
+#+end_src
+** Linux
+Compile your project with nessesory libraries needed(=-lm=, =-ldl=, =-lpthread= and optionally can use =-latomic= if compiling for 32-bit ARM
+#+begin_src bash
+g++ main.cpp -x c++ miniaudio/miniaudio.c Engine.cpp Sound.cpp Device.cpp -o main -lm -ldl -lpthread
+#+end_src
+* Example
+#+begin_src C
+  #include <iostream>
+  #include "Reson/Reson.h"
+
+  #define AUDIO "/path/to/audio/file"
+
+  int main(void)
+  {
+  	Reson::Engine engine;
+  	Reson::Sound sound(engine, AUDIO);
+
+  	sound.Start();
+  	std::cout << "Press Enter to exit..." << std::endl;
+  	getchar();
+  	return 0;
+  }
+#+end_src
+* FFT
+There's a extra module =fft.h= given in the wrapper optionally you can add it if you want to use the functionality of fft in your project
