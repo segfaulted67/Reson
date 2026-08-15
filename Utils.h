@@ -36,5 +36,5 @@ namespace Reson {
 		s32 = ma_format_s32,
 		f32 = ma_format_f32,
 		Count = ma_format_count
-	}
+	};
 }
